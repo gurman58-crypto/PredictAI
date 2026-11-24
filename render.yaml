@@ -1,0 +1,22 @@
+# Render Blueprint for the API (see README "Deployment"). The frontend goes to Vercel.
+services:
+  - type: web
+    name: predictai-api
+    runtime: python
+    plan: starter            # the free 512 MB plan cannot hold TensorFlow; see README for ENABLE_LSTM=false
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ENVIRONMENT
+        value: production
+      - key: MONGODB_URI
+        sync: false          # paste your Atlas connection string in the Render dashboard
+      - key: CORS_ORIGINS
+        sync: false          # e.g. https://your-app.vercel.app
+      - key: ENABLE_LSTM
+        value: "true"
+      - key: ENABLE_TRANSFORMER
+        value: "true"

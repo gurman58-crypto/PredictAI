@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "method": "linear mixture of probabilities, weights fitted by EM on the validation split",
+  "weights": {
+    "ngram": 0.14587148554837268,
+    "lstm": 0.04852430026947862,
+    "transformer": 0.8056042141821537
+  },
+  "validation_targets": 103270,
+  "validation_perplexity_single": {
+    "ngram": 160.45,
+    "lstm": 158.77,
+    "transformer": 86.04
+  },
+  "validation_perplexity_blend": 82.25
+}

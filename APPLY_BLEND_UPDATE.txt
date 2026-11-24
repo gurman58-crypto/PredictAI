@@ -1,0 +1,3 @@
+Extract this ZIP over your PredictAI folder (allow overwrite). No new packages needed.
+Restart the backend (uvicorn) and the frontend (npm run dev), then refresh the browser.
+PredictAI Blend becomes the default model.

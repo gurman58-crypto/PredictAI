@@ -1,0 +1,6 @@
+# Dataset preparation, training, evaluation and ML tests.
+numpy>=1.26
+pandas>=2.1
+nltk>=3.8
+tensorflow>=2.16
+pytest>=8.0

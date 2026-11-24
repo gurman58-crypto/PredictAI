@@ -1,0 +1,27 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# node
+node_modules/
+dist/
+
+# dataset (download with: python -m ml_models.dataset.download_dataset)
+ml_models/dataset/data/
+
+# training scratch
+ml_models/saved_models/lstm/_backup/
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/

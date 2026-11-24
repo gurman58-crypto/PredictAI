@@ -1,0 +1,38 @@
+# docker compose up --build
+#   frontend  http://localhost:8080
+#   API docs  http://localhost:8000/docs
+# Train the models first (README step 5) so ml_models/saved_models contains the artifacts.
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    environment:
+      MONGODB_URI: mongodb://mongo:27017
+      MONGODB_DB: predictai
+      CORS_ORIGINS: http://localhost:8080
+    depends_on:
+      - mongo
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://localhost:8000
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  mongo-data:

@@ -1,0 +1,143 @@
+{
+  "experiment_version": "v1",
+  "evaluated_at": "2026-11-19T12:16:26+00:00",
+  "dataset": {
+    "name": "WikiText-2 (v1, word-level)",
+    "licence": "CC BY-SA 3.0 (Merity et al., 2016 - Wikipedia text)",
+    "vocab_size": 10000,
+    "test_tokens": 231886,
+    "test_targets_evaluated": 231860,
+    "test_unk_rate": 0.1176
+  },
+  "protocol": {
+    "target_set": "test positions from 20, blocks of 10 (same for all models)",
+    "perplexity": "exp(mean NLL) over all targets including <unk>; full-vocabulary softmax / smoothed distribution",
+    "accuracy": "top-1 / top-5 over all tokens except <pad>/<unk>; <unk> targets skipped",
+    "latency": "PredictionEngine.predict end-to-end (no HTTP), 300 sampled contexts after 30 warm-up calls, 1 thread of requests",
+    "context": "LSTM and Transformer see 20-29 left-context tokens per target; N-gram sees its own order-1 tokens"
+  },
+  "environment": {
+    "python": "3.13.18",
+    "machine": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3"
+  },
+  "models": {
+    "ensemble": {
+      "perplexity": 78.73,
+      "top1_accuracy": 24.56,
+      "top5_accuracy": 45.84,
+      "targets_scored": 231860,
+      "targets_in_accuracy": 204589,
+      "status": "evaluated",
+      "latency": {
+        "median_ms": 5.13,
+        "p95_ms": 6.54,
+        "mean_ms": 5.31,
+        "samples": 330
+      },
+      "model_size_mb": 30.73,
+      "version": "v1",
+      "weights": {
+        "ngram": 0.14587148554837195,
+        "lstm": 0.04852430026947838,
+        "transformer": 0.8056042141821498
+      },
+      "members": [
+        "ngram",
+        "lstm",
+        "transformer"
+      ],
+      "members_size_mb": 30.73
+    },
+    "ngram": {
+      "perplexity": 150.35,
+      "top1_accuracy": 20.54,
+      "top5_accuracy": 40.53,
+      "targets_scored": 231860,
+      "targets_in_accuracy": 204589,
+      "status": "evaluated",
+      "latency": {
+        "median_ms": 0.11,
+        "p95_ms": 0.15,
+        "mean_ms": 0.12,
+        "samples": 330
+      },
+      "model_size_mb": 4.88,
+      "version": "v1",
+      "n_bigrams": 412134,
+      "n_trigrams": 1148356,
+      "discount": 0.9
+    },
+    "lstm": {
+      "perplexity": 150.47,
+      "top1_accuracy": 19.47,
+      "top5_accuracy": 38.45,
+      "targets_scored": 231860,
+      "targets_in_accuracy": 204589,
+      "status": "evaluated",
+      "latency": {
+        "median_ms": 2.17,
+        "p95_ms": 2.84,
+        "mean_ms": 2.26,
+        "samples": 330
+      },
+      "model_size_mb": 13.85,
+      "version": "v1",
+      "parameters": 3456528,
+      "epochs_run": 8,
+      "best_epoch": 8,
+      "training_seconds": 1927.7,
+      "seq_len": 30,
+      "embed_dim": 128,
+      "lstm_units": 192
+    },
+    "transformer": {
+      "perplexity": 81.99,
+      "top1_accuracy": 24.38,
+      "top5_accuracy": 45.37,
+      "targets_scored": 231860,
+      "targets_in_accuracy": 204589,
+      "status": "evaluated",
+      "latency": {
+        "median_ms": 3.35,
+        "p95_ms": 4.25,
+        "mean_ms": 3.42,
+        "samples": 330
+      },
+      "model_size_mb": 11.99,
+      "version": "v1",
+      "parameters": 2970640,
+      "epochs_run": 8,
+      "best_epoch": 8,
+      "training_seconds": 1836.1,
+      "seq_len": 30,
+      "d_model": 128,
+      "heads": 4,
+      "layers": 2,
+      "ff_dim": 512
+    }
+  },
+  "ngram_variants": {
+    "unigram": {
+      "perplexity": 430.2,
+      "top1_accuracy": 7.84,
+      "top5_accuracy": 24.04,
+      "targets_scored": 231860,
+      "targets_in_accuracy": 204589
+    },
+    "bigram": {
+      "perplexity": 164.61,
+      "top1_accuracy": 18.17,
+      "top5_accuracy": 37.38,
+      "targets_scored": 231860,
+      "targets_in_accuracy": 204589
+    },
+    "trigram": {
+      "perplexity": 150.35,
+      "top1_accuracy": 20.54,
+      "top5_accuracy": 40.53,
+      "targets_scored": 231860,
+      "targets_in_accuracy": 204589
+    }
+  }
+}

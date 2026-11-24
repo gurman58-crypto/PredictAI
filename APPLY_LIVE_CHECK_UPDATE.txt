@@ -1,0 +1,4 @@
+Extract into C:\Users\HP\OneDrive\Desktop (NOT into the PredictAI folder). Replace all files.
+Restart backend (inside PredictAI\backend): ..\.venv\Scripts\python.exe -m uvicorn app.main:app --port 8000
+Restart frontend (inside PredictAI\frontend): npm run dev
+Then press Ctrl+Shift+R in the browser. Type in the Editor: mistakes are underlined in red; click a word to fix it.

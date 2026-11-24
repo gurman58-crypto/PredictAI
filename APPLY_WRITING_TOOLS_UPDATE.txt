@@ -1,0 +1,4 @@
+Extract into C:\Users\HP\OneDrive\Desktop (NOT into the PredictAI folder). Replace all files.
+Restart: backend (inside PredictAI\backend): ..\.venv\Scripts\python.exe -m uvicorn app.main:app --port 8000
+Frontend (inside PredictAI\frontend): npm run dev
+Then refresh the browser (Ctrl+Shift+R) and open the Editor: the Writing tools panel is under the text area.
